@@ -43,6 +43,16 @@
       // .fadeIn() 要素をフェードインさせる。
       // .fadeOut() 要素をフェードアウトさせる。
       // コミットのため変更加える。
+      $(function(){
+        $('.menu__btn').click(function(){
+          var speed = 500;
+          var menu__btn  = $(this).data("title");
+          var target = $(menu__btn == "contents" || menu__btn == "" ? 'html' : menu__btn);
+          var position = target.offset().top;
+          $('body,html').animate({scrollTop:position}, speed, 'swing');
+      return false;
+        });
+      });
     </script>
   </body>
 </html>

@@ -30,6 +30,14 @@
       // .eq() 引数に応じたindexの要素を指定します。
       // .addClass() クラスを追加します。
       // .removeClass() クラスを削除します。
+     $(function(){
+     $('.nav li').click(function(){ //クリックで発動
+       var index = $('.nav li').index(this); //クリックされたタブの順番を格納 indexで
+       $('.nav li').removeClass('.contents');//クリック済みのタブのcontentsを一旦削除する
+       $(this).addClass('.contents');//クリック済みのcontentsを適用する
+       $('.contents li').addClass('.contents is-hidden').eq(index).removeClass('.contents is-hidden');
+       });//クリックされた順番contentsを表示し、祖霊が浮いのcontentsを削除する。
+     });
     </script>
   </body>
 </html>
