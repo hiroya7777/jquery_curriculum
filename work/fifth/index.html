@@ -98,22 +98,22 @@
       // .change() セレクトボックスの値の変更をキャッチする関数
       // $().each() DOM要素を1つずつループ処理をする（ループ内で$(this)を使うと要素がひとつずつ取得できる）
       $(function(){
-        $('.select').change(function(){ //セレクトボックスが切り替わったら発動　change()
-          var v=$(this).val(); //選択したvalue値を変数に格納する　.val()
-          if(v=='all'){
-            $('ul.list li').each(function(){$(this).show()
-            });
-          }else{
-            $('ul.list li').each(function(){
-              if ($(this).data('category-type')==v){
-                $(this).show(); //セレクトボックスで選択した時、showで切り替える
+        $('.select').change(
+          function(){ //changeメソッドでselectクラスの要素が変更された時に関数が発動する。
+            var optionV = $(this).val(); //selectで選択されたoptionのvalue値を変数optionに格納する。
+            if(optionV =='all'){         // もしallを選択した場合、
+              $('.list li').show() //listクラスの子要素liをshowメソッドで全て表示する。
+            }else{ //all以外の場合、listクラスの
+              $('.list li').each(function(index, value){ //listクラスの子要素liのループ処理
+              var category = $(this).data('category-type');//子要素liのcategory-typeクラスのデータを取得し、変数categoryに格納する。
+              if (category == optionV){ //変数categoryと変数optionVが一致していれば
+                $(this).show(); //showメソッドで表示し、
               }else{
-                $(this).hide();
+                $(this).hide();//一致しない変数はhideメソッドで非表示にする。
               }
-
             });
-          }
-        });
+           }
+        })
       });
     </script>
   </body>

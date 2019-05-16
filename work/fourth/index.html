@@ -56,11 +56,19 @@
       // .next() 要素の隣の要素を取得します。これは使わなくてもできます。
       // .children() 要素の子要素を取得します。
       // .stop() 現在動作中のアニメーション処理を全て中止します。
+
+      //メソッドchildren()でmenu__listクラスの子要素を取得し、子要素がhoverされたら関数が発動する。
+      //ここでのthisはmenu__listのこと。
+      //ホバーした要素のmenu__list__childlistクラスがついた子要素をslidedownメソッドでスライドダウンさせる。
+      //ホバーした要素のmenu__list__childlistクラスがついた子要素をslideupメソッドでスライドアップさせる。
+      //stop()は今回はhoverが外れた時点で処理を中止するメソッド。
       $(function(){
-        $('.menu__list__title').hover(function(){ //カーソルをhoverすると関数発動
-          $(this).next().slideDown(); //カーソルを合わせると、スライドダウン
-        }, function(){
-          $(this).next().slideUp(); //カーソルを話すとスライドアップ
+        $('.menu__list').children().hover( 
+          function(){ 
+            $(this).children('.menu__list__childList').stop().slideDown();
+            }, 
+          function(){
+            $(this).children('.menu__list__childList').stop().slideUp(); 
         });
       });
     </script>
