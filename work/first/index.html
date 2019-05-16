@@ -70,18 +70,28 @@
 <script src="../../common/js/jquery.js"></script>
 <script>
 $(function(){
+// DOMとは階層構造のこと。jsでは各要素をノードという。
+
 // 第1問  id='q1'の要素の文字色を赤色にせよ。
+// $('')で実行したいDOMをくくる。
+// 実行するには、'#'が必要。cssでいうところの'.'である。
   $('#q1').css('color','red');
 });
 // 第2問  id='q2'の要素をクリックしたら背景色をピンクにせよ。
+// クリック関数click.()で指定した要素(btn)をクリックした時に処理を実行する。
+// thisは指定されたDOMの処理を指定する。問題では#q2のこと。
 $('#q2').click(function(){
-  $(this).css('background-color','pink');
+  $(this).css('background-color','cadetblue');
 });
 // 第3問  id='q3'の要素をクリックしたら2秒かけてフェードアウトさせよ。
+// クリック関数を用いる。クリックすると、２秒かけてフェードアウトする。
 $('#q3').click(function(){
   $(this).fadeOut(2000)
   });
 // 第4問  id='q4'の要素をクリックしたらこの要素の前後とこの要素内の前後にテキストを挿入せよ。
+// appendとは指定した子要素の最後にhtmlやテキスト追加を実行することができるメソッド 対になるのものはprepared
+// before afterは要素の前後に実行する
+// メソッドチェーンを使用。１つのjqueryオブジェクトに対して連続したメソッドを用意できる構文のこと
 $('#q4').click(function(){
   $(this).append('DOMの中の後')
          .prepend('DOMの中の前')
@@ -89,6 +99,7 @@ $('#q4').click(function(){
          .after('DOMの後');
 });
 // 第5問  id='q5'の要素をクリックしたらこの要素にlargeというクラスを付与せよ。
+// addclassで
 $('#q5').click(function(){
   $(this).addClass('large');
 });
@@ -97,6 +108,9 @@ $('#q6').click(function(){
   $(this).animate({'margin-top':'100px','margin-left':'100px'},2000)
 });
 // 第7問  id='q7'の子要素をクリックしたら、その要素のインデックス（何番目か）をconsole.log()とalert()を用いて表示させよ。
+// findは指定要素がもつ全要素の中から、合致するものを選択する。
+// 今回は「li」リスト要素から合致する要素を選択し、クリックすると配列番号をコンソールし、画面に警告を出すようにする
+// 変数にindexに#7というクラスを持つリストが何番目にあるかを返す。
 $('#q7').find('li').click(function(){
   var index = $(this).index();
   console.log(index);
